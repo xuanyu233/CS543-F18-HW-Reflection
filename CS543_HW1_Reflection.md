@@ -89,7 +89,7 @@ You already know how to pass a matrix to vertex shader using glGetUnfiromLocatio
 ### Program Structure and callback function
 Think this:
 - once the data is loaded from file, it should be there, once it is send to GPU, why bother read it again and send it to GPU again ?
-- Sahders are not need to change, what changes is some variable in the shader. So why bother InitShaders many times since shaders wont change ?
+- Shaders are not need to change, what changes is some variable in the shader. So why bother InitShaders many times since shaders wont change ?
 
 So something really only need initialize once, and dont need reload, or re initial every time, call back functions runs in a loop. If you re initshader or re initialize buffer, you may allocate a lot of memory in the graphics card, which is prone to error and crash.
 
