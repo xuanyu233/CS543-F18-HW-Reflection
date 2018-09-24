@@ -1,4 +1,5 @@
 # CS543 HW1 Reflection
+
 Xuanyu Chen
 xchen9@wpi.edu
 
@@ -78,12 +79,12 @@ Why not create a class to represerent model, and in this class does the model lo
 #### uniform and attribute
 - They are two ways to send data to GPU
 - uniform data remains unchanged for every shader until you change them. attribute are different data for each shader.
-- This this:
-    - Whay in our start code, int the file vertex1.glsl. Why `vPosition` is declared as vec4 instead of vec4[], because our data is actually an array ?
+- Think this:
+    - In our start code, in the file vertex1.glsl. Why `vPosition` is declared as vec4 instead of vec4[], because our data is actually an array ?
     - Answer: Shaders are program runs in Graphics Card, they runs in parallel at the same time. 
 
 #### Change Color using fragment shader
-You already know how to pass an matrix to vertex shader using glGetUnfiromLocation, and glUniformMatrix4fv, this is shown in slides. You shouldn't miss that. So why not pass some uniform data to fragment shader which changes when you hit keyboard C. The syntax is same, only difference is that based on the data type you send. choose different glUniform function. For example using glUniform1i if you just send an integer to shader.
+You already know how to pass a matrix to vertex shader using glGetUnfiromLocation, and glUniformMatrix4fv, this is shown in slides. You shouldn't miss that. So why not pass some uniform data to fragment shader which changes when you hit keyboard C. The syntax is same, only difference is that based on the data type you send. choose different glUniform function. For example using glUniform1i if you just send an integer to shader.
 
 ### Program Structure and callback function
 Think this:
@@ -92,7 +93,9 @@ Think this:
 
 So something really only need initialize once, and dont need reload, or re initial every time, call back functions runs in a loop. If you re initshader or re initialize buffer, you may allocate a lot of memory in the graphics card, which is prone to error and crash.
 
-Each call back should only do what its supposed to do. Say, if keyboard() is keyboard function, it should only receive keyboard, and change some global flag. Trying to load data, or draw when hitting keyboard is not necessary and easy to crash. You can use `glutPostRedisplay()` to force the render loop to go into display call back.
+The program structure is simple. First Initial, then register callback function, then go into mainLoop.
+
+Each call back should only do what its supposed to do. Say, if keyboard() is keyboard callback function, it should only receive keyboard, and change some global flag. Trying to load data, or draw when hitting keyboard is not necessary and easy to crash. You can use `glutPostRedisplay()` to force the render loop to go into display call back.
 
 So, I will try to keep my display cal back function as clean as possible. Only glDrawArrays and some necessary update to glViewport, and update projection matrix.
 
@@ -152,6 +155,8 @@ private:
 	unsigned int VAO;
 };
 ~~~
+
+`Drawable` is a base class. I can extend `Drawable` to create `DatModel` to represent our model from file, and also extend to create Fractal(Fern, GingerBreadMan). I chooses to do this way so I can simplify my code in Main.cpp.
 
 So, this model class has only a public Render() method except the constructor, this is a replacement for glDrawArrays, in my Main.cpp, whenever I call glDrawArrays, I use Render() instead;
 
@@ -238,4 +243,4 @@ void DrawTile() {
 `DrawTile()` is then called in display when I need to display the tiles.
 
 ### Misc
-Using `enum` instead of Integer.
+Using `enum` instead of Integer when necessary.
