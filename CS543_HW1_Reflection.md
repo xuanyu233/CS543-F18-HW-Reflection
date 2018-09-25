@@ -100,6 +100,9 @@ Each call back should only do what its supposed to do. Say, if keyboard() is key
 So, I will try to keep my display cal back function as clean as possible. Only glDrawArrays and some necessary update to glViewport, and update projection matrix.
 
 ### Aspect ratio and Reshape
+
+`Ortho2D` returns a transform matrix you can use in vertex shader. It actually projects your image to some "drawing area", and this "drawing area" is defined using `glViewport`
+
 in this call back `glutReshapeFunc(resize)`, I only update global width and global height. I will calculate every width and height from the gloabl width and global height instead of some arbitrary width or height.
 
 ~~~C++
@@ -109,7 +112,7 @@ void resize(GLsize w, GLsize h){
 }
 ~~~
 
-So whats in my Reshape ? Much like what shown in slides, I made some modification. Remember, Reshape calls different glViewport based on ratio. So, when you not using reshape, I assume you use glviewport for tiles and thumbnails. When you using reshape, just replace every glViewport with our Reshape function.
+So whats in my Reshape ? Much like what shown in slides, I made some modification. Remember, Reshape calls different `glViewport` based on ratio. So, when you not using reshape, I assume you use `glviewport` for tiles and thumbnails. When you using reshape, just replace every `glViewport` with our Reshape function.
 
 Here is my ReShape function, you can compare it with slides, then you should know what modification I made:
 ~~~C++
