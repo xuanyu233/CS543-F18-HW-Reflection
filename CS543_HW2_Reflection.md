@@ -21,6 +21,8 @@ Using EBO, you need change glDrawArrays to glDrawElements.
 ### Some debug parctice
 - Remember, everything within (-1,1) can be seen in the screen. So normally we can first translate it to origin, and scale it to make every coordinate in range (-1,1). Normally you will see pictures shown in screen after these two steps. After you see something, try to apply view matrix and projection matrix.
 
+- How to check if my normal calculation is correct ? Use normal as color, if your normal is correctly calculated, then the entire scene will show very beautiful RGB colors.
+
 ### Advanced solution to drawing normal and implementing pulse effects
 
 #### Advanced: Using geometry shader
