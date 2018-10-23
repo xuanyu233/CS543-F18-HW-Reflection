@@ -33,7 +33,7 @@ Using geometry shader may be more inituitive:
 - Refactor the shader loader program to make it support more shaders:
 currently InitShaders only support vertex shader and fragment shader, we have to refactor it to make it support more shaders.
 
-[This course lides](https://web.cs.wpi.edu/~emmanuel/courses/cs543/f18/slides/lecture03b.pdf)provides a lot of information on refactoring the shader.
+[This course lides](https://web.cs.wpi.edu/~emmanuel/courses/cs543/f18/slides/lecture03b.pdf) provides a lot of information on refactoring the shader.
 
 - Geometry Shader:
 Hmmmm, I find [this tutorial](https://learnopengl.com/Advanced-OpenGL/Geometry-Shader) to be the best OpenGL tutorial in the web.
