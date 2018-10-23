@@ -21,15 +21,7 @@ Using EBO, you need change glDrawArrays to glDrawElements.
 ### Some debug parctice
 - Remember, everything within (-1,1) can be seen in the screen. So normally we can first translate it to origin, and scale it to make every coordinate in range (-1,1). Normally you will see pictures shown in screen after these two steps. After you see something, try to apply view matrix and projection matrix.
 
-### Solution to drawing normal and implementing pulse effects
-
-#### Directly send normal data to vertex shader
-
-- For drawing normal, you just need store evey start point, and end point, and then draw a line between them. I personally prefer using another VAO and buffer.
-
-- For pulsing effects, as we already know that pulsing is moving each face back and forth along its normal. So we need use different normal for different face. How can we do this ? The answer is using vertex shader. Since we need different normal for different face, so we have to pass normal to shader as attributes.
-
-- You may need to pass some face normal three times as each face has three vertices.
+### Advanced solution to drawing normal and implementing pulse effects
 
 #### Advanced: Using geometry shader
 
