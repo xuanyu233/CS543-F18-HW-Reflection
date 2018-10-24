@@ -40,5 +40,5 @@ Hmmmm, I find [this tutorial](https://learnopengl.com/Advanced-OpenGL/Geometry-S
 
 Using Geometry shader, calculation of face normal can be done in shader. I will put code in the end so you can see what's really going on.
 
-#### Google Drive Link to some of my implementation using Geometry Shader:
-https://drive.google.com/file/d/17w8-Dfmoly5DL9tC76MohBabN7jNZaPq/view?usp=sharing
+#### Google Drive Link to some of my implementation of visualizing Normals using Geometry Shader:
+https://drive.google.com/file/d/1kyJo91a_VtcGwlPRitET92leOXfFNDmQ/view?usp=sharing
