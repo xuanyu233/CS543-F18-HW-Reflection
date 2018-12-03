@@ -7,6 +7,11 @@ xchen9@wpi.edu
 
 I Think this question is most important and I have seen this kind of problems through every assignments. People tend to do everything again and again to draw something. For example, create buffer in GPU, calculate data, load data to GPU and draw them. This is common for general programming applications which only happens on CPU. But keep in mind that openGL uses graphics card which runs in parallel in nature. Especially when doing some transform, using graphics card will definitely speed up the overal performance.
 
+Most important thing : 
+**Dont Even think of initializing and creating buffers in display callback**
+
+**Display callback runs in mainloop, if you keep allocating space in shader, the applications runs slowly and easy to crash**
+
 In some cases, when you want to do some transform, you only need calculate the transform matrix, passing that matrix to the shader, and let GPU does everything else for you. If you try to calculate every 'new' points from previous points, and load the 'new' points to buffer, and draw again, in most cases you are doing something wrong.
 
 So when it comes to HW3, when we want to draw the 'tree' using L systems, we are actually drawing a line, and transforming the line to different places. Instead of calculating every end points of the tree and draw thousands of lines.
