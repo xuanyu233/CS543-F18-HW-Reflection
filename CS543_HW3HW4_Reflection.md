@@ -25,6 +25,11 @@ Using vertex normal : smooth shading
 Smooth shading calculated in vertex shader : Gouraud Shading
 Smooth shading calculated in fragment shader : Phong Shading
 
+# Phong Shading Implementation
+Please check these two tutorials or book chapter if you still get stuck in Phong Lighting:
+- [LearnOpenGL](https://learnopengl.com/Lighting/Basic-Lighting)
+- [GLSL Cookbook](https://proquest.safaribooksonline.com/9781849514767)
+
 ### Why in general shading calculated in fragment shader has better detail in vertex shader ? 
 When shading calculation happens in vertex normal, each RGB value for the vertex is "correct", OpenGL will interpolate color value for other pixels. While calculating in fragment shader, the normal is interpolated but the RGB value for each pixel is calculated by you. So normally calculating in fragment shader will require more resources but have better detail compared with vertex shader.
 
