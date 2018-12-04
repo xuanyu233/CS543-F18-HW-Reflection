@@ -67,37 +67,14 @@ So the eample above checks if LightPosition is given as a direction or a positio
 # PLYModel Class with vertex normals
 
 Finally, after adding the vertex normals, our PLYModel class becomes more mature.
-Here is the header file for the class interface:
+Here is part of the header file for the PLYModel class interface:
 ~~~C++
 class PLYModel : public Drawable {
 public:
-	PLYModel();
-	~PLYModel();
-	PLYModel(const char *file_path);
+	<...>
 	virtual void Render() const override;
-	GLuint GetVAO();
-
-	float xMin, yMin, zMin;
-	float xMax, yMax, zMax;
-
-	float xDis, yDis, zDis;
-
+	<...>
 private:
-	void ReadFile(const char* file_path);
-	void BufferSetup();
-
-	void CalculateFaceNormals();
-	void CalculateVertexNormals();
-	std::string model_name;
-
-	std::vector<vec3> points;
-	std::vector<vec3> face_index;
-	std::vector<vec3> face_normals;
-	std::vector<vec3> vertex_normals;
-
-	GLuint vao_mesh;
+	<...>	
 };
 ~~~
-
-I will upload the implementation as well, feel free to play with it.
-
