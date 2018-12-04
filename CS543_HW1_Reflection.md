@@ -140,22 +140,14 @@ typedef vec2 point2;
 class DatModel : public Drawable
 {
 public:
-	DatModel();
-	DatModel(const char *filename);
-	~DatModel();
-
+	<...>
 	void Render() const override;
-	//float xMin, xMax, yMin, yMax;
-	//float ratio;
-
+	<...>
 private:
-	std::string model_name;
+	<...>
 	void ReadFile(const char *filename);
 	void BufferSetup();
-
-	std::vector<point2> points;
-	std::vector<int> indexes;
-	unsigned int VAO;
+	<...>
 };
 ~~~
 
@@ -163,32 +155,8 @@ private:
 
 So, this model class has only a public Render() method except the constructor, this is a replacement for glDrawArrays, in my Main.cpp, whenever I call glDrawArrays, I use Render() instead;
 
-Here is my `BufferSetup()` and `Render()`:
+Here is my `Render()`:
 ~~~C++
-void DatModel::BufferSetup() {
-	float *v = new float[points.size() * 2];
-	int index = 0;
-	for (int i = 0; i < points.size(); i++) {
-		v[index++] = points[i].x;
-		v[index++] = points[i].y;
-	}
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	GLuint buffer;
-	glGenBuffers(1, &buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*points.size()*2, v, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-	glEnableVertexAttribArray(0);
-
-	glBindVertexArray(0);
-
-	delete[] v;
-
-}
-
 void DatModel::Render() const {
 	std::cout << "DatModel:: " << model_name << " :: Render()" << std::endl;
 	
@@ -210,18 +178,8 @@ void DatModel::Render() const {
 
 This way you can laregly simplify your code in the Main.cpp. Here is a snippet in Main.cpp for using this model class.
 
+For example, the `DrawTile()` can be as simple as : 
 ~~~C++
-
-// Some initial 
-std::vector<Drawable*> model_ptr;
-std::string models[] = {"birdhead.dat", "dino.dat", "dragon.dat", "house.dat",
-						"knight.dat", "rex.dat", "scene.dat", "usa.dat", "vinci.dat"};
-std::string dir = "models/";
-for (int i = 0; i < 9; i++) {
-	std::string file_path = dir + models[i];
-	model_ptr.push_back(new DatModel(file_path.c_str()));
-}
-
 // DrawTile()
 void DrawTile() {
 
