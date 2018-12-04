@@ -38,7 +38,4 @@ currently InitShaders only support vertex shader and fragment shader, we have to
 - Geometry Shader:
 Hmmmm, I find [this tutorial](https://learnopengl.com/Advanced-OpenGL/Geometry-Shader) to be the best OpenGL tutorial in the web.
 
-Using Geometry shader, calculation of face normal can be done in shader. I will put code in the end so you can see what's really going on.
-
-#### Google Drive Link to some of my implementation of visualizing Normals using Geometry Shader:
-https://drive.google.com/file/d/1kyJo91a_VtcGwlPRitET92leOXfFNDmQ/view?usp=sharing
+Using Geometry shader, calculation of face normal can be done in shader. 
